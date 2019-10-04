@@ -6,31 +6,31 @@
   "env": {
     "client_id": {
       "description": "The client id you obtain from the reddit web page.",
-      "generator": "secret"
+      "value": "none"
     },
     "client_secret": {
       "description": "The client secret you obtain from the reddit web page.",
-      "generator": "secret"
+      "value": "none"
     },
     "delay": {
         "description": "They delay in minutes before the bot sends a message to a user.",
-        "generator": "secret"
+        "value": "none"
       },
     "MongoClient": {
         "description": "The mongo database connection string.",
-        "generator": "secret"
+        "value": "none"
       },
       "password": {
         "description": "Your reddit password.",
-        "generator": "secret"
+        "value": "none"
       },
       "subreddits": {
         "description": "The subreddit you want the bot to monitor. Please input in the format subredditname1+subredditname2. For example confidence+socialskills+making_friends+dating_advice",
-        "generator": "secret"
+        "value": "none"
       },
       "username": {
         "description": "Your reddit username. For example , Kenkiko",
-        "generator": "secret"
+        "value": "none"
       }
     }
 }
