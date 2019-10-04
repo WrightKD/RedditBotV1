@@ -4,13 +4,33 @@
   "repository": "https://github.com/WrightKD/RedditBotV1",
   "keywords": ["reddit", "python", "bot"],
   "env": {
-    "SECRET_TOKEN": {
-      "description": "A secret key for verifying the integrity of signed cookies.",
+    "client_id": {
+      "description": "The client id you obtain from the reddit web page.",
       "generator": "secret"
     },
-    "WEB_CONCURRENCY": {
-      "description": "The number of processes to run.",
-      "value": "5"
-    }
+    "client_secret": {
+      "description": "The client secret you obtain from the reddit web page.",
+      "generator": "secret"
+    },
+    "delay": {
+        "description": "They delay in minutes before the bot sends a message to a user.",
+        "generator": "secret"
+      },
+    "MongoClient": {
+        "description": "The mongo database connection string.",
+        "generator": "secret"
+      },
+      "password": {
+        "description": "Your reddit password.",
+        "generator": "secret"
+      },
+      "subreddits": {
+        "description": "The subreddit you want the bot to monitor. Please input in the format subredditname1+subredditname2. For example confidence+socialskills+making_friends+dating_advice",
+        "generator": "secret"
+      },
+      "username": {
+        "description": "Your reddit username. For example , Kenkiko",
+        "generator": "secret"
+      }
     }
 }
