@@ -1,0 +1,16 @@
+{
+  "name": "Reddit Bot",
+  "description": "A Reddit bot created for dirango",
+  "repository": "https://github.com/WrightKD/RedditBotV1",
+  "keywords": ["reddit", "python", "bot"],
+  "env": {
+    "SECRET_TOKEN": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    },
+    "WEB_CONCURRENCY": {
+      "description": "The number of processes to run.",
+      "value": "5"
+    }
+    }
+}
