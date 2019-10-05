@@ -83,6 +83,7 @@ def SendMessage(author,id,keyword):
   title = None
   url = None
   message = None
+  message_title = None
 
   for submission in post:
     title = submission.title
@@ -92,10 +93,12 @@ def SendMessage(author,id,keyword):
 
   if keyword == 'nervous':
     message = 'Hi ' + author + '\n\n Your message on the '+ thread +' post about being ' + keyword + ' got me thinking.Perhaps I can be of service by providing you with some interesting information. \n\n My name is Diran and I send out a weekly newsletter discussing strategies to help people overcome issues like anxiety, low self-esteem and self-doubt, so they can successfully go after whatever they want in life. I also coach specifically to retrain their mindset and help people ace social interactions. \n\n I believe you would find value from it. Would you like me to send you the link to the website so you can subscribe? \n\n Thanks'
+    message_title = 'Questions about being nervous'
   else:
     message = 'Hi ' + author + '\n\n Your message on the '+ thread +' post about ' + keyword + ' got me thinking.Perhaps I can be of service by providing you with some interesting information. \n\n My name is Diran and I send out a weekly newsletter discussing strategies to help people overcome issues like anxiety, low self-esteem and self-doubt, so they can successfully go after whatever they want in life. I also coach specifically to retrain their mindset and help people ace social interactions. \n\n I believe you would find value from it. Would you like me to send you the link to the website so you can subscribe? \n\n Thanks'
+    message_title = 'Questions about ' + keyword
     
-  reddit.redditor(author).message('Need Help',message)
+  reddit.redditor(author).message(message_title, message)
 
 if __name__ == "__main__":
 
