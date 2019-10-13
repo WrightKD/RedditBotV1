@@ -25,38 +25,34 @@ collection = db["Botv1"]
 delay = int(os.environ['delay'])
 subreddits = os.environ['subreddits']
 
-#confidence+socialskills+making_friends+dating_advice
-
 subreddit = reddit.subreddit(subreddits)
 
 comment_stream = subreddit.stream.comments(pause_after=-1,skip_existing=True)
 submission_stream = subreddit.stream.submissions(pause_after=-1,skip_existing=True)
 
-KEYS = ['self-esteem', 'anxiety', 'nervous', 'self-doubt', 'no confidence', 'no charisma']
+KEY_WORDS = {
+             'confidence':['struggled','losing confidence','lose confidence','lost my confidence','lost confidence','confidence issues','confidence problems','no confidence','lack confidence','low confidence','little confidence','zero confidence','gain confidence','get confidence','get confident','become confident','be confident'],
+             'anxiety':['anxious','nervous','terrified','sorried','scared','anxiety'],
+             'charisma':['no charisma','lack charisma','little charisma','lost my charisma','become charismatic','am boring','am dull','things to say','become interesting'],
+             'self-doubt & self-esteem':['dont believe in myself','dont think i can','have self-doubt','feel down','feel really down','get down','get really down','doubt myself','self-esteem issues','self esteem issues','self-esteem problems','self esteem problems','low self esteem','low self-esteem','no self esteem','no self-esteem','zero self esteem','zero self-esteem','little self esteem','little self-esteem','any self-esteem','any self esteem','hate myself','hate my life','hate everything']
+             }
 
 messageQueue = []
 
 def FindKeys(sentence):
 
   isKey = False
-  foundWord = 'None'
+  keyword = 'None'
 
-  sentence= re.sub(r"\p{P}", lambda m: "-" if m.group(0) == "-" else "", sentence)
+  sentencev2 = re.sub(r"\p{P}", lambda m: "-" if m.group(0) == "-" else "", sentence)
+  sentencev3 = sentencev2.lower()
 
-  if ('no charisma' in sentence.lower()):
-    return {'Key' : True , 'keyword' : 'no charisma'}
-
-  if ('no confidence' in sentence.lower()):
-    return {'Key' : True , 'keyword' : 'no confidence'}
-
-  words = sentence.split()
-
-  for word in words:
-
-    if word.lower() in KEYS:
-      foundWord = word.lower()
-      isKey = True
-      break
+  for key, value in KEY_WORDS.items():
+    for phase in value:
+      if phase in sentencev3:
+        isKey = True
+        foundWord = key
+        break
   
   return {'Key' : isKey , 'keyword' : foundWord}
 
